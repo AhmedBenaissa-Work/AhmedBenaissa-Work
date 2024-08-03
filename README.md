@@ -11,6 +11,6 @@ AhmedBenaissa-Work/AhmedBenaissa-Work is a ✨ special ✨ repository because it
 You can click the Preview link to take a look at your changes.
 --->
 ![skills:](https://miro.medium.com/v2/resize:fit:300/1*x0d41ns8PTQZz4a3VbMrBg.png)
-![skills:](https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg?size=20)
+![skills:](https://seekvectors.com/storage/images/node%20js%20logo.svg)
 ![skills:](https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg)
 
