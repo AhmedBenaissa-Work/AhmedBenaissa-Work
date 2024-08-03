@@ -10,7 +10,8 @@
 AhmedBenaissa-Work/AhmedBenaissa-Work is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
-![image](https://github.com/user-attachments/assets/84d4feab-95c9-4970-8e8f-59c3ff9dcdd5)
+[image](https://github.com/user-attachments/assets/09c7cc99-1bf9-4ae6-8c2c-0604f20013f7)
+
 
 
 ![skills:](https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg)
