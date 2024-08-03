@@ -12,7 +12,7 @@ You can click the Preview link to take a look at your changes.
 --->
 ![image:](https://picresize.com/images/rsz_node_js_logo.png)
 
-![image1:](https://picresize.com/images/rsz_1react-logo-1.png)
+![image1:](https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png?size=20)
 
 ![skills:](https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg)
 
