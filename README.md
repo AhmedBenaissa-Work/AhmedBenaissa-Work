@@ -4,7 +4,6 @@
 - 🌱 I’m currently learning Devops
 - 💞️ I’m looking to collaborate on numerous project
 - 📫 How to reach me : ahmed.benaissa27031999@gmail.com
-- 😄 Pronouns: don't use this shit
 - ⚡ Fun fact: ⚡⚡⚡⚡
    #### 📫 How to reach me:
   
