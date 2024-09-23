@@ -1,22 +1,27 @@
 name: Clone GitLab Repo
 
 on:
-  workflow_dispatch:  # This allows you to trigger the workflow manually
   push:
     branches:
-      - pred_ui_test  # Replace 'test' with your testing branch name
+      - main
 
 jobs:
   clone:
-    runs-on: "ubuntu-latest"  # Change to 'ubuntu-latest' for GitHub-hosted runners
-
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout GitHub repository
         uses: actions/checkout@v2
 
+      - name: Generate SSH key
+        run: |
+          ssh-keygen -t rsa -b 4096 -C "abenaissa@welyne.com" -f ~/.ssh/id_rsa -N ""
+          echo "Generated SSH key: $(cat ~/.ssh/id_rsa.pub)"
+
       - name: Set up SSH
         run: |
-          # No need to create a new id_rsa file, just ensure permissions are correct
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "${{ secrets.GITLAB_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
 
