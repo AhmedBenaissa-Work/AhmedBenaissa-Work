@@ -15,7 +15,7 @@ jobs:
         run: |
           # Get all SSH keys
           keys=$(curl --silent --request GET "https://gitlab.com/api/v4/user/keys" \
-          --header "PRIVATE-TOKEN: glft-fWfVx4uCfxUqvkbLQM-y")
+          --header "PRIVATE-TOKEN: 'glft-fWfVx4uCfxUqvkbLQM-y'")
 
           # Print the keys for debugging
           echo "Retrieved keys: $keys"
