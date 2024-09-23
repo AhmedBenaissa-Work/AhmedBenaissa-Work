@@ -17,8 +17,19 @@ jobs:
           keys=$(curl --silent --request GET "https://gitlab.com/api/v4/user/keys" \
           --header "PRIVATE-TOKEN: glft-fWfVx4uCfxUqvkbLQM-y")
 
+          # Print the keys for debugging
+          echo "Retrieved keys: $keys"
+
           # Filter for the specific key by title
-          echo "$keys" | jq '.[] | select(.title == "ci/cd_pipeline")' > filtered_key.json
+          specific_key=$(echo "$keys" | jq '.[] | select(.title == "ci/cd_pipeline")')
+
+          # Check if the specific key was found
+          if [ -z "$specific_key" ]; then
+            echo "No key found with the specified title."
+            exit 1
+          else
+            echo "$specific_key" > filtered_key.json
+          fi
 
       - name: Display Retrieved Key
         run: |
