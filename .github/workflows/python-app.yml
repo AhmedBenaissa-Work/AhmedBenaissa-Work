@@ -1,36 +1,25 @@
-name: Manage SSH Key and Clone Repo
+name: Retrieve Specific GitLab SSH Key
 
 on:
   workflow_dispatch:  # Allows manual trigger
   push:
     branches:
-      - test  # Change this to your test branch
+      - test  # Change this to your testing branch
 
 jobs:
-  manage_ssh_key:
+  retrieve_key:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout GitHub repository
-        uses: actions/checkout@v2
-
-      - name: Generate SSH Key
+      - name: Retrieve SSH Keys from GitLab
+        id: retrieve_keys
         run: |
-          ssh-keygen -t rsa -b 4096 -C "ahmed.benaissa27031999@gmail.com" -f ~/.ssh/id_rsa -N ""
+          # Get all SSH keys
+          keys=$(curl --silent --request GET "https://gitlab.com/api/v4/user/keys" \
+          --header "PRIVATE-TOKEN: glft-fWfVx4uCfxUqvkbLQM-y")
 
-      - name: Add SSH Key to GitLab
-        run: |
-          curl --request POST "https://gitlab.com/api/v4/user/keys" \
-          --header "PRIVATE-TOKEN: glpat-5-FWB2xZ3M73duoMyJoE" \
-          --data "title=My SSH Key" \
-          --data "key=$(cat ~/.ssh/id_rsa.pub)"
+          # Filter for the specific key by title
+          echo "$keys" | jq '.[] | select(.title == "ci/cd_pipeline")' > filtered_key.json
 
-      - name: Set up SSH for cloning
+      - name: Display Retrieved Key
         run: |
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
-
-      - name: Clone GitLab repository
-        run: |
-            git clone -b pred_ui git@gitlab.com:Welyne-Dev/fit-size-ia.git 
-        
-         
+          cat filtered_key.json
