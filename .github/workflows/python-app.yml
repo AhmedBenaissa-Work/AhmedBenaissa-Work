@@ -33,4 +33,4 @@ jobs:
         run: |
             git clone -b pred_ui git@gitlab.com:Welyne-Dev/fit-size-ia.git 
         
-          git clone -b pred_ui git@gitlab.com:Welyne-Dev/fit-size-ia.git
+         
