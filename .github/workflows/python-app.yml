@@ -1,0 +1,17 @@
+name: Clone GitLab Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  clone:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GitHub repository
+        uses: actions/checkout@v2
+
+      - name: Clone GitLab repository
+        run: |
+          git clone git@gitlab.com:Welyne-Dev/fit-size-ia.git
