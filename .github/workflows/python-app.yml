@@ -15,7 +15,7 @@ jobs:
 
       - name: Generate SSH Key
         run: |
-          ssh-keygen -t rsa -b 4096 -C "abenaissa@welyne.com" -f ~/.ssh/id_rsa -N ""
+          ssh-keygen -t rsa -b 4096 -C "ahmed.benaissa27031999@gmail.com" -f ~/.ssh/id_rsa -N ""
 
       - name: Add SSH Key to GitLab
         run: |
