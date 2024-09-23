@@ -7,24 +7,18 @@ on:
 
 jobs:
   clone:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted  # Change to 'ubuntu-latest' for GitHub-hosted runners
+
     steps:
       - name: Checkout GitHub repository
         uses: actions/checkout@v2
 
-      - name: Generate SSH key
-        run: |
-          ssh-keygen -t rsa -b 4096 -C "ahmed.benaissa27031999@gmail.com" -f ~/.ssh/id_rsa -N ""
-          echo "Generated SSH key: $(cat ~/.ssh/id_rsa.pub)"
-
       - name: Set up SSH
         run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          echo "${{ secrets.GITLAB_SSH_KEY }}" > ~/.ssh/id_rsa
+          # No need to create a new id_rsa file, just ensure permissions are correct
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
 
       - name: Clone GitLab repository
         run: |
-          git clone git@gitlab.com:your-username/your-repo.git
+          git clone -b pred_ui git@gitlab.com:Welyne-Dev/fit-size-ia.git
