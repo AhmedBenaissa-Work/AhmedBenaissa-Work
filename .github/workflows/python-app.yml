@@ -1,27 +1,31 @@
-name: Clone GitLab Repo
+name: Manage SSH Key and Clone Repo
 
 on:
+  workflow_dispatch:  # Allows manual trigger
   push:
     branches:
-      - main
+      - test  # Change this to your test branch
 
 jobs:
-  clone:
+  manage_ssh_key:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout GitHub repository
         uses: actions/checkout@v2
 
-      - name: Generate SSH key
+      - name: Generate SSH Key
         run: |
           ssh-keygen -t rsa -b 4096 -C "abenaissa@welyne.com" -f ~/.ssh/id_rsa -N ""
-          echo "Generated SSH key: $(cat ~/.ssh/id_rsa.pub)"
 
-      - name: Set up SSH
+      - name: Add SSH Key to GitLab
         run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          echo "${{ secrets.GITLAB_SSH_KEY }}" > ~/.ssh/id_rsa
+          curl --request POST "https://gitlab.com/api/v4/user/keys" \
+          --header "PRIVATE-TOKEN: glpat-5-FWB2xZ3M73duoMyJoE" \
+          --data "title=My SSH Key" \
+          --data "key=$(cat ~/.ssh/id_rsa.pub)"
+
+      - name: Set up SSH for cloning
+        run: |
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
 
