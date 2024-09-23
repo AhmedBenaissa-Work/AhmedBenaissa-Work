@@ -14,7 +14,7 @@ jobs:
 
       - name: Generate SSH key
         run: |
-          ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa -N ""
+          ssh-keygen -t rsa -b 4096 -C "ahmed.benaissa27031999@gmail.com" -f ~/.ssh/id_rsa -N ""
           echo "Generated SSH key: $(cat ~/.ssh/id_rsa.pub)"
 
       - name: Set up SSH
